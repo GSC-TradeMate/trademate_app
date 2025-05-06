@@ -1,0 +1,94 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:trademate_app/presentation/chat/view/chat_main_view.dart';
+import 'package:trademate_app/presentation/notification/view/notification_main_view.dart';
+import 'package:trademate_app/presentation/profile/view/profile_main_view.dart';
+import 'package:trademate_app/theme/palette.dart';
+
+class HomeWrapperView extends StatefulWidget {
+  const HomeWrapperView({super.key});
+
+  @override
+  State<HomeWrapperView> createState() => _HomeWrapperViewState();
+}
+
+final PersistentTabController tabBarController =
+    PersistentTabController(initialIndex: 0);
+
+class _HomeWrapperViewState extends State<HomeWrapperView> {
+  List<Widget> get _buildWidget {
+    return [
+      const ChatMainView(),
+      const NotificationMainView(),
+      const ProfileMainView(),
+    ];
+  }
+
+  List<PersistentBottomNavBarItem> get _buildItems {
+    return [
+      PersistentBottomNavBarItem(
+        icon: const Icon(
+          TablerIcons.message_circle,
+          size: 28,
+        ),
+        activeColorPrimary: Palette.primaryDef,
+        inactiveColorPrimary: Palette.grey,
+        title: "Chat",
+        textStyle: GoogleFonts.inter(
+          fontWeight: FontWeight.w600,
+          color: Palette.grey,
+        ),
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(
+          TablerIcons.bell,
+          size: 28,
+        ),
+        activeColorPrimary: Palette.primaryDef,
+        inactiveColorPrimary: Palette.grey,
+        title: "Notification",
+        textStyle: GoogleFonts.inter(
+          fontWeight: FontWeight.w600,
+          color: Palette.grey,
+        ),
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(
+          TablerIcons.user,
+          size: 28,
+        ),
+        activeColorPrimary: Palette.primaryDef,
+        inactiveColorPrimary: Palette.grey,
+        title: "Profile",
+        textStyle: GoogleFonts.inter(
+          fontWeight: FontWeight.w600,
+          color: Palette.grey,
+        ),
+      ),
+    ];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PersistentTabView(
+      context,
+      controller: tabBarController,
+      screens: _buildWidget,
+      items: _buildItems,
+      navBarStyle: NavBarStyle.style12,
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      navBarHeight: 72,
+      decoration: const NavBarDecoration(
+        colorBehindNavBar: Colors.transparent,
+        boxShadow: [
+          BoxShadow(
+            color: Palette.black,
+          ),
+        ],
+      ),
+      backgroundColor: Palette.white,
+    );
+  }
+}

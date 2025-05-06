@@ -2,7 +2,7 @@ import 'dart:ui';
 
 class Palette {
   // PRIMARY
-  static const Color primaryDef = Color(0xFF4C6A4B);
+  static const Color primaryDef = Color(0xFF1877F2);
   static const Color primaryDefStrong = Color(0xFF2D452F);
   static const Color primaryBgStrong = Color(0xFF6B9D4A);
   static const Color primaryBgWeak = Color(0xFFCFE2CE);
@@ -14,19 +14,19 @@ class Palette {
   static const Color successBgWeak = Color(0xFFF8FFF5);
 
   // INFO
-  static const Color infoDef = Color(0xFF35C5FC);
+  static const Color infoDef = Color(0xFF1877F2);
   static const Color infoDefStrong = Color(0xFF269BD8);
   static const Color infoBgStrong = Color(0xFFD6FEFE);
   static const Color infoBgWeak = Color(0xFFF0FFFF);
 
   // WARNING
-  static const Color waringDef = Color(0xFFFFC700);
+  static const Color waringDef = Color(0xFFFF8706);
   static const Color waringDefStrong = Color(0xFFB99000);
   static const Color waringBgStrong = Color(0xFFFFEDAC);
   static const Color waringBgWeak = Color(0xFFFFFAE8);
 
   // DANGER
-  static const Color dangerDef = Color(0xFFFF0022);
+  static const Color dangerDef = Color(0xFFFF0D00);
   static const Color dangerDefStrong = Color(0xFFC0001A);
   static const Color dangerBgStrong = Color(0xFFFFC1CA);
   static const Color dangerBgWeak = Color(0xFFFFF2F4);
