@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import "package:get/get.dart";
 import 'package:trademate_app/theme/theme.dart';
-import 'package:trademate_app/utils/constant.dart';
+// import 'package:trademate_app/utils/constant.dart';
 import 'package:trademate_app/utils/routes/app_routes.dart';
 import 'package:trademate_app/utils/routes/page_routes.dart';
 

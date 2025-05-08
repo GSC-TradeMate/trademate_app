@@ -4,8 +4,8 @@ class Palette {
   // PRIMARY
   static const Color primaryDef = Color(0xFF1877F2);
   static const Color primaryDefStrong = Color(0xFF2D452F);
-  static const Color primaryBgStrong = Color(0xFF6B9D4A);
-  static const Color primaryBgWeak = Color(0xFFCFE2CE);
+  static const Color primaryBgStrong = Color.fromARGB(255, 215, 232, 255);
+  static const Color primaryBgWeak = Color.fromARGB(255, 215, 232, 255);
 
   // SUCCESS
   static const Color successDef = Color(0xFF38C43D);

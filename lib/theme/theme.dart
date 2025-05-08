@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart' show GoogleFonts;
 import 'package:trademate_app/theme/palette.dart';
 
 class AppTheme {
   static ThemeData light = ThemeData(
+    textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme),
     highlightColor: Colors.transparent,
     splashColor: Colors.transparent,
     pageTransitionsTheme: const PageTransitionsTheme(builders: {

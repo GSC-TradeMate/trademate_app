@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:trademate_app/presentation/chat/view/chat_main_view.dart';
-import 'package:trademate_app/presentation/notification/view/notification_main_view.dart';
+import 'package:trademate_app/presentation/insight/view/insight_main_view.dart';
 import 'package:trademate_app/presentation/profile/view/profile_main_view.dart';
 import 'package:trademate_app/theme/palette.dart';
 
@@ -21,7 +21,7 @@ class _HomeWrapperViewState extends State<HomeWrapperView> {
   List<Widget> get _buildWidget {
     return [
       const ChatMainView(),
-      const NotificationMainView(),
+      const InsightMainView(),
       const ProfileMainView(),
     ];
   }
@@ -36,20 +36,20 @@ class _HomeWrapperViewState extends State<HomeWrapperView> {
         activeColorPrimary: Palette.primaryDef,
         inactiveColorPrimary: Palette.grey,
         title: "Chat",
-        textStyle: GoogleFonts.inter(
+        textStyle: GoogleFonts.poppins(
           fontWeight: FontWeight.w600,
           color: Palette.grey,
         ),
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(
-          TablerIcons.bell,
+          TablerIcons.arrow_elbow_right,
           size: 28,
         ),
         activeColorPrimary: Palette.primaryDef,
         inactiveColorPrimary: Palette.grey,
-        title: "Notification",
-        textStyle: GoogleFonts.inter(
+        title: "Insight",
+        textStyle: GoogleFonts.poppins(
           fontWeight: FontWeight.w600,
           color: Palette.grey,
         ),
@@ -62,7 +62,7 @@ class _HomeWrapperViewState extends State<HomeWrapperView> {
         activeColorPrimary: Palette.primaryDef,
         inactiveColorPrimary: Palette.grey,
         title: "Profile",
-        textStyle: GoogleFonts.inter(
+        textStyle: GoogleFonts.poppins(
           fontWeight: FontWeight.w600,
           color: Palette.grey,
         ),
