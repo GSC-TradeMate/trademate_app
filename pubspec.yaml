@@ -22,6 +22,9 @@ dependencies:
   persistent_bottom_nav_bar: ^6.2.1
   pull_to_refresh: ^2.0.0
   shimmer: ^3.0.0
+  web_socket_channel: ^3.0.3
+  logger: ^2.5.0
+  socket_io_client: ^3.1.2
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +33,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - .env

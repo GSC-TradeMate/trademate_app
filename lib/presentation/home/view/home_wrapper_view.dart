@@ -5,7 +5,9 @@ import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:trademate_app/presentation/chat/view/chat_main_view.dart';
 import 'package:trademate_app/presentation/insight/view/insight_main_view.dart';
 import 'package:trademate_app/presentation/profile/view/profile_main_view.dart';
+import 'package:trademate_app/test/test_main_view.dart';
 import 'package:trademate_app/theme/palette.dart';
+import 'package:trademate_app/utils/constant.dart';
 
 class HomeWrapperView extends StatefulWidget {
   const HomeWrapperView({super.key});
@@ -23,6 +25,7 @@ class _HomeWrapperViewState extends State<HomeWrapperView> {
       const ChatMainView(),
       const InsightMainView(),
       const ProfileMainView(),
+      if (Constant.CURRENT_ENVIRONMENT == Environment.DEV) const TestMainView(),
     ];
   }
 
@@ -67,6 +70,20 @@ class _HomeWrapperViewState extends State<HomeWrapperView> {
           color: Palette.grey,
         ),
       ),
+      if (Constant.CURRENT_ENVIRONMENT == Environment.DEV)
+        PersistentBottomNavBarItem(
+          icon: const Icon(
+            TablerIcons.test_pipe_2,
+            size: 28,
+          ),
+          activeColorPrimary: Palette.primaryDef,
+          inactiveColorPrimary: Palette.grey,
+          title: "Test",
+          textStyle: GoogleFonts.poppins(
+            fontWeight: FontWeight.w600,
+            color: Palette.grey,
+          ),
+        ),
     ];
   }
 

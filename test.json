@@ -1,0 +1,13 @@
+{
+  "session": {
+    "uid": "ceeb8d1c-cf83-4ce0-8423-3f2e147f0fb9",
+    "code": "7C07T5",
+    "createdAt": "2025-05-10T22:29:10.893Z"
+  },
+  "token": {
+    "uid": "85b3580d-5ec4-40d2-9401-967aa02d9645",
+    "sessionUid": "ceeb8d1c-cf83-4ce0-8423-3f2e147f0fb9",
+    "expiresAt": "2025-06-09T22:29:11.072Z",
+    "createdAt": "2025-05-10T22:29:11.072Z"
+  }
+}
