@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import "package:get/get.dart";
 import 'package:trademate_app/theme/theme.dart';
 import 'package:trademate_app/utils/constant.dart';
+import 'package:trademate_app/utils/hive/hive_app.dart';
 import 'package:trademate_app/utils/routes/app_routes.dart';
 import 'package:trademate_app/utils/routes/page_routes.dart';
 
@@ -9,6 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Future.wait([
     Constant.load(),
+    HiveApp.initilize(),
   ]);
   runApp(const MainApp());
 }

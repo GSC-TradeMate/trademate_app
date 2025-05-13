@@ -3,6 +3,9 @@ import 'package:logger/logger.dart';
 import 'package:trademate_app/data/repo/auth_repo.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:trademate_app/data/sock.dart';
+import 'package:trademate_app/utils/hive/models/session/session_model.dart';
+import 'package:trademate_app/utils/hive/stores/session_store.dart';
+import 'package:trademate_app/utils/routes/app_routes.dart';
 
 class AuthSigninController extends GetxController {
   Logger log = Logger();
@@ -29,11 +32,11 @@ class AuthSigninController extends GetxController {
       socket.connect();
       socket.on(
         "qr_code:$code",
-        (data) {
+        (data) async {
           log.i("message recieved");
           if (data["event"] == "authenticated") {
-            var d = data["data"];
-            log.i(d);
+            await SessionStore.set(SessionModel.fromMap(data["data"]));
+            Get.offAllNamed(AppRoute.home);
           }
         },
       );
