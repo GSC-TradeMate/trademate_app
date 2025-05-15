@@ -7,4 +7,7 @@ class AppRoute {
   /* AUTH */
   static const String authWelcome = '/auth-welcome';
   static const String authSignin = '/auth-signin';
+
+  /* PROFILE */
+  static const String editProfile = '/edit-profile';
 }

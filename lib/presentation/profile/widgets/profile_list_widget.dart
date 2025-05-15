@@ -5,17 +5,19 @@ import '../../../theme/palette.dart';
 class ProfileListWidget extends StatelessWidget {
   final String text;
   final IconData icon;
+  final VoidCallback? onTap;
 
   const ProfileListWidget({
     super.key,
     required this.text,
     required this.icon,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(
             horizontal: 16.0, vertical: 8.0), // Add margin

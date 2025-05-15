@@ -13,8 +13,6 @@ class ChatMainView extends StatefulWidget {
 
 class _ChatMainViewState extends State<ChatMainView>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
   // Dummy list of recent chats
   final List<Map<String, String>> _recentChats = [
     {"name": "Alice", "lastMessage": "Hey, how are you?", "time": "10:30 AM"},
@@ -31,64 +29,36 @@ class _ChatMainViewState extends State<ChatMainView>
   ];
 
   @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(
-        length: 4,
-        initialIndex: 1,
-        vsync: this); // Chats tab is usually the second tab
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Palette.white,
+        elevation: 0,
+        title: const Text(
+          "TradeMate",
+          style: TextStyle(
+            color: Palette.primaryDef,
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              TablerIcons.dots_vertical,
+              color: Palette.primaryDef,
+            ),
+            onPressed: () {
+              // Refresh action
+            },
+          ),
+        ],
+      ),
       body: SafeArea(
         // Use SafeArea to avoid status bar overlap
         child: Column(
           children: <Widget>[
-            // Custom Header for Home Page
-            Container(
-              color: Palette.primaryDef,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "TradeMate",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            InkWell(
-                              child: Icon(
-                                TablerIcons.dots_vertical,
-                                color: Colors.white,
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
             RoundedSearchBar(
               hintText: "Search in chats...",
               onChanged: (text) {
@@ -99,24 +69,18 @@ class _ChatMainViewState extends State<ChatMainView>
 
             // Tab Bar View
             Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: <Widget>[
-                  // Camera Tab (Placeholder)
-                  const Center(child: Text("Camera View Placeholder")),
+              child:
                   // Chats Tab
                   ListView.builder(
-                    itemCount: _recentChats.length,
-                    itemBuilder: (context, index) {
-                      final chat = _recentChats[index];
-                      return ChatListItem(
-                        name: chat["name"]!,
-                        lastMessage: chat["lastMessage"]!,
-                        time: chat["time"]!,
-                      );
-                    },
-                  ),
-                ],
+                itemCount: _recentChats.length,
+                itemBuilder: (context, index) {
+                  final chat = _recentChats[index];
+                  return ChatListItem(
+                    name: chat["name"]!,
+                    lastMessage: chat["lastMessage"]!,
+                    time: chat["time"]!,
+                  );
+                },
               ),
             ),
           ],

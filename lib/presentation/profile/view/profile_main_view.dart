@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
+import 'package:get/get.dart';
+import 'package:trademate_app/presentation/profile/widgets/profile_avatar_widget.dart';
 import 'package:trademate_app/presentation/profile/widgets/profile_list_widget.dart';
 import 'package:trademate_app/theme/palette.dart';
+import 'package:trademate_app/utils/routes/app_routes.dart';
 
 class ProfileMainView extends StatefulWidget {
   const ProfileMainView({super.key});
@@ -19,28 +22,6 @@ class _ProfileMainViewState extends State<ProfileMainView> {
         // Use SafeArea to avoid status bar overlap
         child: Column(
           children: <Widget>[
-            // Custom Header for Profile Page
-            Container(
-              color: Palette.primaryDef,
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-              child: Row(
-                children: [
-                  const Expanded(
-                    child: Text(
-                      "Profile", // Page title
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  // Add more icons here if needed
-                ],
-              ),
-            ),
-
             // Profile Content Area
             Expanded(
               // Use Expanded to make the content area take available space
@@ -49,19 +30,18 @@ class _ProfileMainViewState extends State<ProfileMainView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    const SizedBox(height: 24.0), // Spacing from the header
-
-                    const CircleAvatar(
-                      radius: 60,
-                      backgroundColor:
-                          Palette.primaryBgWeak, // Placeholder background
-                      //backgroundImage: NetworkImage('URL_TO_YOUR_PROFILE_IMAGE'), // Use NetworkImage for online images
-                      child: Icon(
-                        TablerIcons.user, // Placeholder icon
-                        size: 60,
+                    const SizedBox(height: 40.0),
+                    Text(
+                      "Profile", // Page title
+                      style: TextStyle(
                         color: Palette.primaryDef,
+                        fontSize: 26.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
+                    const SizedBox(height: 20.0), // Spacing from the header
+
+                    ProfileAvatarWidget(),
                     const SizedBox(height: 16.0),
 
                     const Text(
@@ -75,15 +55,20 @@ class _ProfileMainViewState extends State<ProfileMainView> {
 
                     ProfileListWidget(
                       icon: TablerIcons.pencil,
-                      text: "Profile Edit",
+                      text: "Edit Profile",
+                      onTap: () {
+                        Get.toNamed(AppRoute.editProfile);
+                      },
                     ),
                     ProfileListWidget(
                       icon: TablerIcons.crown,
                       text: "Subscription",
+                      onTap: () {},
                     ),
                     ProfileListWidget(
                       icon: TablerIcons.settings,
                       text: "Settings",
+                      onTap: () {},
                     ),
                   ],
                 ),
