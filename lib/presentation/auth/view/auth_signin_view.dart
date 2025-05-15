@@ -32,13 +32,55 @@ class _AuthSigninViewState extends State<AuthSigninView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sign In"),
+        backgroundColor: Palette.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Palette.primaryDef),
+          onPressed: () {
+            Navigator.pop(context); // Go back to the previous screen
+          },
+        ),
+        title: const Text(
+          "Sign In",
+          style: TextStyle(
+            color: Palette.primaryDef,
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Row(
+              children: [
+                Spacer(),
+                const Text(
+                  'Sign In to ',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const Text(
+                  'TradeMate',
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Palette.primaryDef),
+                ),
+                Spacer(),
+              ],
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: const Text(
+                'Enter the 6-digit verification code provided and click the link below.',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(height: 30),
             Obx(() {
               if (!_con.hasCode) {
                 return SizedBox(
@@ -101,7 +143,7 @@ class _AuthSigninViewState extends State<AuthSigninView> {
               child: Text(
                 "${Constant.TM_WEB_URI}/signin",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 16, color: Palette.primaryDef),
               ),
             ),
           ],

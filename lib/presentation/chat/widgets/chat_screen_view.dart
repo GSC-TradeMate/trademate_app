@@ -31,29 +31,33 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Widget _buildTextComposer() {
-    return IconTheme(
-      data: IconThemeData(color: Theme.of(context).colorScheme.secondary),
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Row(
-          children: [
-            Flexible(
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Row(
+        children: [
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
               child: TextField(
                 controller: _textController,
                 onSubmitted: _handleSubmitted,
-                decoration:
-                    const InputDecoration.collapsed(hintText: 'Type a message'),
+                style: const TextStyle(color: Palette.black),
+                decoration: const InputDecoration(
+                  hintText: 'Type a message',
+                  hintStyle: TextStyle(color: Palette.grey),
+                  border: InputBorder.none,
+                ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: IconButton(
-                icon: const Icon(Icons.send),
-                onPressed: () => _handleSubmitted(_textController.text),
-              ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: IconButton(
+              icon: Icon(TablerIcons.send_2, color: Palette.primaryDef),
+              onPressed: () => _handleSubmitted(_textController.text),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -69,7 +73,7 @@ class _ChatScreenState extends State<ChatScreen> {
             // Custom Header
             Container(
               decoration: BoxDecoration(
-                color: Palette.primaryDef,
+                color: Palette.white,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1),
@@ -82,7 +86,8 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Row(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.arrow_back, color: Colors.white),
+                    icon:
+                        const Icon(Icons.arrow_back, color: Palette.primaryDef),
                     onPressed: () {
                       // Handle back button press
                       Navigator.pop(
@@ -93,7 +98,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     backgroundColor: Palette.primaryBgWeak,
                     child: Icon(TablerIcons.user, color: Palette.primaryDef),
                   ),
-                  const SizedBox(width: 8.0),
+                  const SizedBox(width: 12.0),
                   Expanded(
                     // Use Expanded here
                     child: Column(
@@ -102,7 +107,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         Text(
                           widget.contactName, // Use the passed contact name
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: Palette.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 18.0,
                           ),
@@ -110,7 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         const Text(
                           "online", // Replace with actual status
                           style: TextStyle(
-                            color: Colors.white70,
+                            color: Color.fromARGB(255, 98, 98, 98),
                             fontSize: 12.0,
                           ),
                         ),

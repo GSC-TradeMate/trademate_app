@@ -36,7 +36,7 @@ class ButtonSolid extends StatelessWidget {
         backgroundColor: bgColor,
         foregroundColor: textColor,
         fixedSize: fixedSize,
-        textStyle: GoogleFonts.inter(
+        textStyle: GoogleFonts.poppins(
           fontWeight: FontWeight.w600,
         ),
       ),

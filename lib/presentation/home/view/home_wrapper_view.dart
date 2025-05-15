@@ -46,7 +46,7 @@ class _HomeWrapperViewState extends State<HomeWrapperView> {
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(
-          TablerIcons.arrow_elbow_right,
+          TablerIcons.chart_bar_popular,
           size: 28,
         ),
         activeColorPrimary: Palette.primaryDef,

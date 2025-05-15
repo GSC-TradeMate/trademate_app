@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:hive/hive.dart';
 
 part 'session_model.g.dart';
@@ -24,4 +25,9 @@ class SessionModel extends HiveObject {
       );
 
   String get bearerToken => "Bearer $token";
+  Options get optionWithAuth => Options(
+        headers: {
+          "Authorization": bearerToken,
+        },
+      );
 }

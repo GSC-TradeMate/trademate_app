@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trademate_app/presentation/auth/controller/auth_welcome_controller.dart';
+import 'package:trademate_app/theme/palette.dart';
+import 'package:trademate_app/widgets/button_solid_widget.dart';
 
 class AuthWelcomeView extends StatefulWidget {
   const AuthWelcomeView({super.key});
@@ -26,19 +28,37 @@ class _AuthWelcomeViewState extends State<AuthWelcomeView> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Welcome to TradeMate',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            Image.asset(
+              "assets/brands/logo-tm.png",
+              height: 135,
+              fit: BoxFit.cover,
             ),
-            const SizedBox(height: 20),
+            Row(
+              children: [
+                Spacer(),
+                const Text(
+                  'Welcome to ',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const Text(
+                  'TradeMate',
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Palette.primaryDef),
+                ),
+                Spacer(),
+              ],
+            ),
             const Text(
               'Your one-stop solution for trading.',
               style: TextStyle(fontSize: 16),
             ),
-            const SizedBox(height: 40),
-            ElevatedButton(
+            const SizedBox(height: 30),
+            ButtonSolid(
               onPressed: _con.handleSignin,
               child: const Text('Login With Whatsapp'),
+              fixedSize: Size(238, 49),
             ),
           ],
         ),

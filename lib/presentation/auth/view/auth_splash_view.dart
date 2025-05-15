@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:trademate_app/presentation/auth/controller/auth_splash_controller.dart';
+import 'package:trademate_app/theme/palette.dart';
 
 class AuthSplashView extends StatefulWidget {
   const AuthSplashView({super.key});
@@ -22,15 +24,11 @@ class _AuthSplashViewState extends State<AuthSplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
+        color: Palette.white,
         child: Center(
-          child: Text(
-            'Splash Screen',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+          child: SvgPicture.asset(
+            "assets/brands/logo-tm-text.svg",
+            fit: BoxFit.cover,
           ),
         ),
       ),

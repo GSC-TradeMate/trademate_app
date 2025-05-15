@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trademate_app/presentation/profile/widgets/profile_avatar_widget.dart';
 import 'package:trademate_app/theme/palette.dart';
 import 'package:trademate_app/widgets/button_solid_widget.dart';
 

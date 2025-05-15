@@ -2,7 +2,11 @@ class AppRoute {
   /* DEFAULT */
   static const String initialRoute = splash;
   static const String splash = '/splash';
+
+  /* HOME */
   static const String home = '/home';
+
+  /* CHAT */
 
   /* AUTH */
   static const String authWelcome = '/auth-welcome';
