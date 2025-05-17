@@ -6,7 +6,7 @@ class Constant {
   static Future<void> load() async => await dotenv.load(fileName: ".env");
   static String get TM_WEB_URI => dotenv.get("TM_WEB_URI");
   static String get SOCKET_PRODUCTION_HOSTNAME =>
-      dotenv.get("SOCKET_DEVELOPMENT_HOSTNAME");
+      dotenv.get("SOCKET_PRODUCTION_HOSTNAME");
   static String get SOCKET_DEVELOPMENT_HOSTNAME =>
       dotenv.get("SOCKET_DEVELOPMENT_HOSTNAME");
   static String get API_PRODUCTION_HOSTNAME =>

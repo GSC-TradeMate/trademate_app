@@ -3,6 +3,7 @@ import 'package:logger/logger.dart';
 import 'package:trademate_app/data/repo/auth_repo.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:trademate_app/data/sock.dart';
+import 'package:trademate_app/utils/constant.dart';
 import 'package:trademate_app/utils/hive/models/session/session_model.dart';
 import 'package:trademate_app/utils/hive/stores/session_store.dart';
 import 'package:trademate_app/utils/routes/app_routes.dart';
@@ -30,6 +31,12 @@ class AuthSigninController extends GetxController {
     try {
       log.i("Socket connecting");
       socket.connect();
+      log.i(Constant.SOCKET_HTTP_URI);
+      log.i(Constant.CURRENT_ENVIRONMENT);
+      socket.onError((e) {
+        log.i(Constant.SOCKET_HTTP_URI);
+        log.e("Socket error: $e");
+      });
       socket.on(
         "qr_code:$code",
         (data) async {

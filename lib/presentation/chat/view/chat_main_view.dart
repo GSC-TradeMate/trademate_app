@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:trademate_app/presentation/chat/controller/chat_main_controller.dart';
 import 'package:trademate_app/presentation/chat/widgets/chat_list_widget.dart';
 import 'package:trademate_app/theme/palette.dart';
+import 'package:trademate_app/utils/date_formatter.dart';
 import 'package:trademate_app/widgets/rounded_searchbar_widget.dart';
 
 class ChatMainView extends StatefulWidget {
@@ -45,6 +47,18 @@ class _ChatMainViewState extends State<ChatMainView> {
           ),
         ),
         actions: [
+          Obx(
+            () => Visibility(
+              visible: _con.isChatFetchedError,
+              child: IconButton(
+                icon: Icon(
+                  TablerIcons.refresh,
+                  color: Palette.primaryDef,
+                ),
+                onPressed: _con.onRefresh,
+              ),
+            ),
+          ),
           IconButton(
             icon: Icon(
               TablerIcons.dots_vertical,
@@ -73,27 +87,28 @@ class _ChatMainViewState extends State<ChatMainView> {
               () => Expanded(
                 child:
                     // Chats Tab
-                    ListView.builder(
-                  itemCount: _con.chatLists.length,
-                  itemBuilder: (context, index) {
-                    return ChatListItem(
-                      name: _con.chatLists[index].name,
-                      lastMessage: _con.chatLists[index].body ?? "kosong",
-                      time: _con.chatLists[index].createdAt.toIso8601String(),
-                    );
-                  },
+                    SmartRefresher(
+                  controller: _con.refreshController,
+                  onRefresh: _con.onRefresh,
+                  child: ListView.builder(
+                    itemCount: _con.chatLists.length,
+                    itemBuilder: (context, index) {
+                      return ChatListItem(
+                        name: _con.chatLists[index].name,
+                        lastMessage: _con.chatLists[index].body ?? "-",
+                        time: DateFormatter.formatDynamic(
+                            _con.chatLists[index].createdAt),
+                        onTap: () => _con.handleMoveToMessage(
+                          name: _con.chatLists[index].name,
+                          id: _con.chatLists[index].id,
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
           ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).colorScheme.secondary,
-        onPressed: () {},
-        child: const Icon(
-          TablerIcons.message_circle,
-          color: Colors.white,
         ),
       ),
     );

@@ -1,33 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
-import 'package:trademate_app/presentation/chat/widgets/chat_screen_view.dart';
 import 'package:trademate_app/theme/palette.dart';
 
 class ChatListItem extends StatelessWidget {
   final String name;
   final String lastMessage;
   final String time;
+  final void Function() onTap;
 
   const ChatListItem({
-    Key? key,
+    super.key,
     required this.name,
     required this.lastMessage,
     required this.time,
-  }) : super(key: key);
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      // Use InkWell for tap effect
-      onTap: () {
-        // Navigate to the ChatScreen when tapped
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  ChatScreen(contactName: name)), // Pass contact name
-        );
-      },
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: Row(

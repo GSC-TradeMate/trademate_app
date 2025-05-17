@@ -7,6 +7,7 @@ class AppRoute {
   static const String home = '/home';
 
   /* CHAT */
+  static const String chatMessage = '/chat-message';
 
   /* AUTH */
   static const String authWelcome = '/auth-welcome';
